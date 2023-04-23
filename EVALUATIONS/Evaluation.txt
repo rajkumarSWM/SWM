@@ -1,0 +1,71 @@
+The process of evaluating a disease starts by visiting the Mayo Clinic website and randomly selecting a disease. The next step involves manually checking the symptoms associated with the disease and using them as a query to perform a search. The aim is to determine if the disease appears in the top 10 search results or not. 
+
+Results:
+
+1. Influenza - fever, body aches, cough (Not Found)
+
+2. Malaria - fever, headache, chills (Found)
+
+3. Tuberculosis - cough, weight loss, night sweats (Found)
+
+4. Diabetes - excessive thirst, frequent urination, blurred vision (Found)
+
+5. Hepatitis - fatigue, abdominal pain, jaundice (Not Found)
+
+6. Arthritis - joint pain, stiffness, swelling (Found)
+
+7. Asthma - wheezing, shortness of breath, coughing (Found)
+
+8. Lyme disease - rash, flu-like symptoms, joint pain (Not Found)
+
+9. Pneumonia - cough, fever, chest pain (Not Found)
+
+10. Sickle cell anemia - fatigue, pain, jaundice (Not Found)
+
+11. Cystic fibrosis - cough, mucus, digestive problems (Not Found)
+
+12. Chickenpox - itchy rash, fever, fatigue (Found)
+
+13. Multiple sclerosis - fatigue, vision problems, numbness (Not Found)
+
+14. Ureteral-Cancer - fatigue, weight loss, pain (Found)
+
+15. heart-attack- cold, sweat, shortness of breath (Found)
+
+16. norovirus- muscle pain, stomach pain (Found)
+
+17. narcolepsy- daytime sleepliness, muscle loss (Found)
+	
+18. Urinary tract infection (UTI) - painful urination, frequent urination, cloudy or bloody urine (Found)
+
+19. Migraine - severe headache, nausea, sensitivity to light or sound (Found)
+
+20. Kidney stones - severe pain in the side or back, nausea, vomiting (Found)
+
+21. Bipolar disorder - mood swings, energy changes, sleep problems (Not Found)
+
+22. Celiac disease - digestive problems, fatigue, skin rash (Found) 
+
+23. Endometriosis - painful periods, pelvic pain, infertility (Not Found)
+
+24. Cirrhosis - fatigue, weight loss, jaundice (Found)
+
+25. Leukemia - fatigue, pale skin, easy bruising (Found)
+
+26. Lupus - joint pain, fatigue, skin rash (Found)
+
+27. Gout - joint pain, swelling, redness (Found)
+
+28. Sleep apnea - loud snoring, gasping for air during sleep, fatigue (Not Found)
+
+29. Anxiety disorder - excessive worry, restlessness, irritability (Not Found)
+
+30. Chlamydia - abnormal discharge, painful urination, pain during sex (Found)
+
+
+
+
+Accuracy: 63%  (19/30)
+
+
+
