@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Care Mining</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Set container height to viewport height */
+        }
+
+        .header {
+            flex: 3; /* Set header to take up 75% of container height */
+            background-color: #F5F5F5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #F5F5F5;
+            z-index: 1; /* Set z-index to make sure group-info is displayed on top of container */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-info {
+            text-align: center;
+            /*position: absolute;*/
+            /*top: 30%;*/
+            /*left: 38%;*/
+        }
+
+        .search-section {
+            flex: 1;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #search-button {
+            background-color: #E2FF00;
+            width: 25%;
+            height: 30%;
+            border-radius: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="group-info">
+        <p style="margin-left: 3%;">Group 25</p>
+        <p style="margin-right: 3%;">CSE 573 Spring 23</p>
+    </div>
+</header>
+<div class="container">
+    <div class="header">
+        <div class="site-info">
+            <h1 id="site-title">Mining Healthcare Websites</h1>
+            <p id="site-description">All your healthcare concerns at one place</p>
+        </div>
+    </div>
+    <div class="search-section">
+        <button id="search-button">Let's Search</button>
+    </div>
+</div>
+</body>
+</html>

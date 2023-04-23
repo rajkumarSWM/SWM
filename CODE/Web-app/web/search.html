@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Care Mining</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- JavaScripts -->
+    <!-- Third-party JS frameworks, https://sweetalert.js.org/-->
+    <script src="./js/jquery-3.5.0.min.js"></script>
+    <script src="./js/sweetalert.min.js"></script>
+    <!-- project JS source codes-->
+    <script src="./js/request_handlers.js"></script>
+    <script src="./js/newSearch.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Set container height to viewport height */
+        }
+
+        .header {
+            flex: 1;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 110px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .header-navigation{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .results {
+            flex: 6;
+        }
+
+
+
+        .switch-button {
+            border: 2px solid #E2FF00;
+            background: black;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 240px;
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: #D9D9D9;
+            position: relative;
+            padding-right: 120px;
+        }
+
+        .switch-button:before {
+            content: "Drugs";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .switch-button-checkbox {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .switch-button-checkbox:checked + .switch-button-label:before {
+            transform: translateX(120px);
+            transition: transform 300ms linear;
+        }
+
+        .switch-button-label {
+            position: relative;
+            padding: 15px 0;
+            display: block;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .switch-button-label:before {
+            content: "";
+            background: #C5C3C5;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+            transform: translateX(0);
+            transition: transform 300ms;
+        }
+
+        .switch-button-label-span {
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 35%;
+            border: 2px solid #E2FF00;
+            border-radius: 10px;
+            color: black
+        }
+
+        .search-box input[type="text"] {
+            border: none;
+            flex-grow: 1;
+            font-size: 16px;
+            outline: none;
+            padding: 5px;
+        }
+
+        .search-box button[type="submit"] {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-box button[type="submit"] i {
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .results {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            flex-basis: 50%;
+        }
+
+        .card {
+            background: white;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .drugsCard {
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            //border: 1px solid #E2FF00;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            min-width: 60%;
+            min-height: 35%;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+
+        .drugResults{
+            flex: 6;
+            background-image: url(image.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+        .drugContainer{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-symptoms{
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-navigation">
+            <div class="switch-button">
+                <input class="switch-button-checkbox" type="checkbox" onclick="searchOptionChange()"/>
+                <label class="switch-button-label"><span class="switch-button-label-span">Diseases</span></label>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search_box" placeholder="Type the symptoms here...">
+                <button type="submit" onclick="sendSearchRequest()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="header-symptoms" id="related_symptoms">
+            <br/>
+        </div>
+    </div>
+    <div class="results">
+        <div class="column"  style="background: #C5C3C5;">
+            <h2 style="margin-top: 2%; text-align: center;">POSSIBLE DISEASES</h2>
+            <div id="diseases">
+
+            </div>
+        </div>
+        <div class="column" >
+            <h2 style="margin-top: 2%; text-align: center;">FORUM THREADS</h2>
+            <div id="forums">
+
+            </div>
+        </div>
+    </div>
+    <div class="drugResults">
+        <div class='drugsCard'>
+            <h3 style="text-align: center; margin-bottom: 2%;">POTENTIAL DRUGS</h3>
+            <div id="drugs">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
